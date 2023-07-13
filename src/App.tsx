@@ -5,6 +5,8 @@ import {
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
+import http from "./http-common";
 
 function App() {
   const data = "When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are \\[x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.\\]";
@@ -18,6 +20,23 @@ function App() {
     }
   },
     [tex])
+const getData = async () => {
+    try {
+      const response = await axios.get("https://flask-api-restful.vercel.app/users")
+      console.log(response)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+    useEffect(() => {
+      getData()
+
+    }, []);
+    
+
+  
 
 let l = []
     
