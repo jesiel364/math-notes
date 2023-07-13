@@ -8,10 +8,8 @@ import './App.css'
 
 function App() {
   const data = "When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are \\[x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.\\]";
-  const [tex,
-    setTex] = useState("")
-  const op = "\("
-  const ot = "\)"
+  const [tex, setTex] = useState("")
+
 
   useEffect(()=> {
     if (typeof window?.MathJax !== "undefined") {
@@ -20,21 +18,30 @@ function App() {
     }
   },
     [tex])
+
+let l = []
     
- const [lines, setLines]= useState([])
+ const [lines, setLines]= useState([1])
  function Change(e){
    setTex(e.target.value)
-   setLines(Array(e.target.value.split("\n").length))
-   alert(lines)
-   
-   
+  //  console.log(e.target.value.split('\n'))
+   setLines(e.target.value.split( '\n').fill(lines.length,0,10))
+ }
+
+ function handleKeyPress(e){
+  // console.log(e.target.value.split('\n'))
+  if(e.key == 'Enter'){
+    setLines(lines)
+  }
+
+  // console.log(lines)
  }
 
 
   return (
     <>
     <div>
-      <h2>Integrating MathJax v3 in React</h2>
+    <h2>{"\\(\\sqrt{MathNotes} \\)"}</h2>
       
       <p>
       {"\\(" + tex +"\\)"}
@@ -46,13 +53,15 @@ function App() {
   </div>
   <div id="editor">
   <div className="LineNumbers">
-    {lines.map(item => {
-     
-    return(<span>{item}</span>)
+    {lines.map((item,i) => {
+    
+    return(<span>{i+1}</span>)
      
     })}
+
+    {/* {lines} */}
   </div>
-      <textarea className="Editor" value={tex} onChange={(e)=> { Change(e)
+      <textarea onKeyPress={handleKeyPress} className="Editor" value={tex} onChange={(e)=> { Change(e)
          }} />
          
    </div>

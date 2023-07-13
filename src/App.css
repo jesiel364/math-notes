@@ -56,10 +56,12 @@
   /*top:0;*/
   font-size: 22px;
   font-family: "Open Sans", serif;
+  /* line-height: 1.2; */
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 .Editor:focus{
-  border-style: solid;
-  border: none;
+  outline: 0;
 }
 
 .Res{
@@ -68,4 +70,23 @@
 
 #editor{
   display : flex;
+}
+
+.LineNumbers{
+  display: flex;
+  background-color: #888;
+  flex-direction: column;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.LineNumbers span{
+  /* background-color: rebeccapurple; */
+  display: block;
+  font-size: 22px;
+  font-family: "Open Sans", serif;
+  line-height: .75;
+  margin-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
