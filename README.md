@@ -1,2 +1,2 @@
 # math-notes
-![alt text](Isolated.jpg "Title")
+![alt text](isolated.jpg "Title")
